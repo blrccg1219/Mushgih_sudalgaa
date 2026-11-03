@@ -64,7 +64,7 @@ th,td{padding:7px 9px;border-bottom:1px solid var(--bd);text-align:left;white-sp
     </div>
 
     <div id="noBox" class="hide">
-     <div id="g_rs"><label class="l">Ажил эрхлээгүй шалтгаан <i>*</i></label><div class="opts col"><label class="opt"><input type="radio" name="rs" value="Үргэлжлүүлэн суралцаж байгаа"> Үргэлжлүүлэн суралцаж байгаа</label><label class="opt"><input type="radio" name="rs" value="Жирэмсэн, эсвэл нялх хүүхэдтэй"> Жирэмсэн, эсвэл нялх хүүхэдтэй</label><label class="opt"><input type="radio" name="rs" value="Эрүүл мэндийн шалтгаанаар"> Эрүүл мэндийн шалтгаанаар</label><label class="opt"><input type="radio" name="rs" value="Ар гэрийн асуудалтай"> Ар гэрийн асуудалтай</label><label class="opt"><input type="radio" name="rs" value="Бусад"> Бусад</label></div><div class="err"></div></div>
+     <div id="g_rs"><label class="l">Ажил эрхлээгүй шалтгаан <i>*</i></label><div class="opts col"><label class="opt"><input type="radio" name="rs" value="Үргэлжлүүлэн суралцаж байгаа"> Үргэлжлүүлэн суралцаж байгаа</label><label class="opt"><input type="radio" name="rs" value="Жирэмсэн, эсвэл нялх хүүхэдтэй"> Жирэмсэн, эсвэл нялх хүүхэдтэй</label><label class="opt"><input type="radio" name="rs" value="Эрүүл мэндийн шалтгаанаар"> Эрүүл мэндийн шалтгаанаар</label><label class="opt"><input type="radio" name="rs" value="Ар гэрийн асуудалтай"> Ар гэрийн асуудалтай</label><label class="opt"><input type="radio" name="rs" value="Ур чадвар, туршлага дутагдалтай байгаа"> Ур чадвар, туршлага дутагдалтай байгаа</label><label class="opt"><input type="radio" name="rs" value="Ажил хайгаад олж чадаагүй"> Ажил хайгаад олж чадаагүй</label><label class="opt"><input type="radio" name="rs" value="Нас, хүйс, яс үндэс бусад ялгаварлалд өртдөг"> Нас, хүйс, яс үндэс бусад ялгаварлалд өртдөг</label><label class="opt"><input type="radio" name="rs" value="Бусад"> Бусад</label></div><div class="err"></div></div>
     </div>
    </div>
    <div id="msg"></div>
@@ -73,7 +73,7 @@ th,td{padding:7px 9px;border-bottom:1px solid var(--bd);text-align:left;white-sp
   <div id="done" class="card hide"><h2>Баярлалаа!</h2><p>Таны хариу амжилттай бүртгэгдлээ.</p><button class="btn sec" id="again">Өөр хариу бөглөх</button></div>
 </section></div>
 <script>
-const SCRIPT_URL='https://script.google.com/macros/s/AKfycby5l13eXo7gPOl0QZjCRAPFxGELjRvmx5q6COT3s2xpmFPareS1WZ2Uf2GGwaYhmSYlFQ/exec'; // https://script.google.com/macros/s/.../exec
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycbztvIS39qlQOL4kw0xV5wTmROMTUQ-pWNY3MeHLz1FO2psW8gxcxDjWxGZkKA-wsKo4Gg/exec'; // https://script.google.com/macros/s/.../exec
 function send(d,done){
  const cb='cb'+Date.now(),s=document.createElement('script');let fin=false;
  const end=r=>{if(fin)return;fin=true;clearTimeout(t);delete window[cb];s.remove();done(r)};
