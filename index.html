@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="mn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--bg:#f3f5f9;--card:#fff;--tx:#1b2330;--mu:#5f6b7d;--bd:#d6dce6;--ac:#1a56b8;--ac2:#e8f0fc;--er:#c0392b;--ok:#1e8449;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12161d;--card:#1b212b;--tx:#e8ecf3;--mu:#98a3b5;--bd:#333c4a;--ac:#6ea3f5;--ac2:#22304a;--er:#ff7b6b;--ok:#58d68d}}
+:root[data-theme="dark"]{--bg:#12161d;--card:#1b212b;--tx:#e8ecf3;--mu:#98a3b5;--bd:#333c4a;--ac:#6ea3f5;--ac2:#22304a;--er:#ff7b6b;--ok:#58d68d}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:16px}
+.head{background:var(--ac);color:#fff;border-radius:14px 14px 0 0;padding:22px 20px}
+:root:not([data-theme="light"]) .head{color:#0d1626}
+.head h1{margin:0 0 6px;font-size:1.4rem}.head p{margin:0;opacity:.9;font-size:.95rem}
+.tabs{display:flex;gap:6px;margin:12px 0}
+.tabs button{flex:1;padding:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;font:inherit;cursor:pointer}
+.tabs button.on{background:var(--ac2);border-color:var(--ac);color:var(--ac);font-weight:600}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:18px;margin-bottom:12px}
+.card h2{margin:0 0 12px;font-size:1.05rem}
+label.l{display:block;font-weight:600;margin:12px 0 6px}
+label.l i{color:var(--er);font-style:normal}
+input[type=text],input[type=tel],select{width:100%;padding:11px 12px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);font:inherit}
+input:focus,select:focus{outline:2px solid var(--ac);border-color:transparent}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--bd);border-radius:10px;cursor:pointer;background:var(--bg)}
+.opt:has(input:checked){border-color:var(--ac);background:var(--ac2)}
+.opts.col{flex-direction:column}.opts.col .opt{width:100%}
+.err{color:var(--er);font-size:.85rem;margin-top:4px;min-height:0}
+.has-err input[type=text],.has-err input[type=tel],.has-err select{border-color:var(--er)}
+.btn{padding:12px 22px;border:0;border-radius:10px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer}
+:root:not([data-theme="light"]) .btn{color:#0d1626}
+.btn.sec{background:var(--ac2);color:var(--ac)}.btn:disabled{opacity:.5;cursor:default}
+.hide{display:none!important}
+.note{color:var(--mu);font-size:.88rem}
+.msg{padding:12px 14px;border-radius:10px;margin:10px 0}
+.msg.ok{background:var(--ac2);color:var(--ok)}.msg.bad{background:var(--ac2);color:var(--er)}
+.sc{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{padding:7px 9px;border-bottom:1px solid var(--bd);text-align:left;white-space:nowrap}th{color:var(--mu)}
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.stat{flex:1;min-width:110px;background:var(--ac2);border-radius:10px;padding:10px}.stat b{display:block;font-size:1.4rem}
+</style>
+</head><body><div class="wrap">
+<div class="head"><h1>Төгсөгчдийн ажил эрхлэлтийн мөшгөх судалгаа</h1><p>Төгсөгч бүр нэг удаа бөглөнө. Бүх од (*) бүхий талбар заавал.</p></div>
+<section id="formView">
+  <form id="f" novalidate>
+   <div class="card"><h2>1. Хувийн мэдээлэл</h2>
+    <div id="g_program"><label class="l">Төгссөн хөтөлбөр <i>*</i></label>
+     <select id="program"><option value="">— Сонгоно уу —</option>
+      <option>ЭМНЭЛГИЙН ТОНОГ ТӨХӨӨРӨМЖ</option><option>Цахилгаан систем автоматжуулалт</option><option>Цахилгаан электроник</option><option>Эрчим хүчний ухаалаг сүлжээ ба систем</option><option>Эрчим хүчний технологи ба үйлдвэрийн автоматжуулалт</option></select><div class="err"></div></div>
+    <div id="g_sid"><label class="l">Оюутны код <i>*</i></label><input type="text" id="sid" placeholder="Жишээ: MEA24E001" autocapitalize="characters" autocomplete="off"><div class="err"></div></div>
+    <div id="g_ln"><label class="l">Овог (бүтнээр) <i>*</i></label><input type="text" id="ln" autocomplete="family-name"><div class="err"></div></div>
+    <div id="g_fn"><label class="l">Нэр (бүтнээр) <i>*</i></label><input type="text" id="fn" autocomplete="given-name"><div class="err"></div></div>
+    <div id="g_sex"><label class="l">Хүйс <i>*</i></label><div class="opts"><label class="opt"><input type="radio" name="sex" value="эр"> Эр</label><label class="opt"><input type="radio" name="sex" value="эм"> Эм</label></div><div class="err"></div></div>
+    <div id="g_ph"><label class="l">Утасны дугаар <i>*</i></label><input type="tel" id="ph" inputmode="numeric" maxlength="8" placeholder="8 оронтой тоо" autocomplete="tel"><div class="err"></div></div>
+   </div>
+
+   <div class="card"><h2>2. Ажил эрхлэлтийн байдал</h2>
+    <div id="g_emp"><label class="l">Та одоо ажилтай юу? <i>*</i></label><div class="opts"><label class="opt"><input type="radio" name="emp" value="yes"> Ажилтай</label><label class="opt"><input type="radio" name="emp" value="no"> Ажил эрхлээгүй</label></div><div class="err"></div></div>
+
+    <div id="yesBox" class="hide">
+     <div id="g_when"><label class="l">Төгсөөд хэдий хугацаанд ажилд орсон бэ? <i>*</i></label><div class="opts col"><label class="opt"><input type="radio" name="when" value="6 сарын дотор"> Төгсөөд 6 сарын дотор</label><label class="opt"><input type="radio" name="when" value="1 жилийн дотор"> Төгсөөд 1 жилийн дотор</label></div><div class="err"></div></div>
+     <div id="g_org"><label class="l">Ажлын байрны төрөл <i>*</i></label><div class="opts col"><label class="opt"><input type="radio" name="org" value="Төрийн байгууллагад"> Төрийн байгууллагад</label><label class="opt"><input type="radio" name="org" value="Хувийн байгууллагад"> Хувийн байгууллагад</label><label class="opt"><input type="radio" name="org" value="Хувиараа хөдөлмөр эрхэлж байгаа"> Хувиараа хөдөлмөр эрхэлж байгаа</label></div><div class="err"></div></div>
+     <div id="g_job"><label class="l">Хөдөлмөрийн гэрээний төрөл <i>*</i></label><div class="opts"><label class="opt"><input type="radio" name="job" value="Байнгын"> Байнгын</label><label class="opt"><input type="radio" name="job" value="Улирлын"> Улирлын</label><label class="opt"><input type="radio" name="job" value="Түр"> Түр</label></div><div class="err"></div></div>
+    </div>
+
+    <div id="noBox" class="hide">
+     <div id="g_rs"><label class="l">Ажил эрхлээгүй шалтгаан <i>*</i></label><div class="opts col"><label class="opt"><input type="radio" name="rs" value="Үргэлжлүүлэн суралцаж байгаа"> Үргэлжлүүлэн суралцаж байгаа</label><label class="opt"><input type="radio" name="rs" value="Жирэмсэн, эсвэл нялх хүүхэдтэй"> Жирэмсэн, эсвэл нялх хүүхэдтэй</label><label class="opt"><input type="radio" name="rs" value="Эрүүл мэндийн шалтгаанаар"> Эрүүл мэндийн шалтгаанаар</label><label class="opt"><input type="radio" name="rs" value="Ар гэрийн асуудалтай"> Ар гэрийн асуудалтай</label><label class="opt"><input type="radio" name="rs" value="Ур чадвар, туршлага дутагдалтай байгаа"> Ур чадвар, туршлага дутагдалтай байгаа</label><label class="opt"><input type="radio" name="rs" value="Ажил хайгаад олж чадаагүй"> Ажил хайгаад олж чадаагүй</label><label class="opt"><input type="radio" name="rs" value="Нас, хүйс, яс үндэс бусад ялгаварлалд өртдөг"> Нас, хүйс, яс үндэс бусад ялгаварлалд өртдөг</label><label class="opt"><input type="radio" name="rs" value="Бусад"> Бусад</label></div><div class="err"></div></div>
+    </div>
+   </div>
+   <div id="msg"></div>
+   <button class="btn" id="sub" type="submit">Илгээх</button>
+  </form>
+  <div id="done" class="card hide"><h2>Баярлалаа!</h2><p>Таны хариу амжилттай бүртгэгдлээ.</p><button class="btn sec" id="again">Өөр хариу бөглөх</button></div>
+</section></div>
+<script>
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycbztvIS39qlQOL4kw0xV5wTmROMTUQ-pWNY3MeHLz1FO2psW8gxcxDjWxGZkKA-wsKo4Gg/exec'; // https://script.google.com/macros/s/.../exec
+function send(d,done){
+ const cb='cb'+Date.now(),s=document.createElement('script');let fin=false;
+ const end=r=>{if(fin)return;fin=true;clearTimeout(t);delete window[cb];s.remove();done(r)};
+ window[cb]=end;
+ const t=setTimeout(()=>end(null),20000);
+ s.onerror=()=>end(null);
+ s.src=SCRIPT_URL+'?callback='+cb+'&d='+encodeURIComponent(JSON.stringify(d));
+ document.body.appendChild(s);
+}
+const val=n=>{const e=document.querySelector('input[name="'+n+'"]:checked');return e?e.value:''};
+const $f=document.getElementById('f'),$=s=>document.querySelector(s);
+function show(t,c){$('#msg').innerHTML=t?'<div class="msg '+c+'"></div>':'';if(t)$('#msg').firstChild.textContent=t}
+function sync(){const e=val('emp');$('#yesBox').classList.toggle('hide',e!=='yes');$('#noBox').classList.toggle('hide',e!=='no')}
+$f.addEventListener('change',sync);
+$('#sid').addEventListener('input',e=>e.target.value=e.target.value.toUpperCase().replace(/[^A-Z0-9.]/g,''));
+$('#ph').addEventListener('input',e=>e.target.value=e.target.value.replace(/\D/g,''));
+function setErr(id,m){const g=$('#g_'+id);g.classList.toggle('has-err',!!m);g.querySelector('.err').textContent=m||''}
+function collect(){return{program:$('#program').value,sid:$('#sid').value.trim(),ln:$('#ln').value.trim(),fn:$('#fn').value.trim(),sex:val('sex'),ph:$('#ph').value.trim(),emp:val('emp'),when:val('when'),org:val('org'),job:val('job'),rs:val('rs')}}
+function validate(d){
+ const nm=/^[A-Za-z\u0400-\u04FF\u04E8\u04E9\u04AE\u04AF\-\u2019' .]{2,}$/;let first=null,ok=true;
+ const chk=(id,bad,m)=>{setErr(id,bad?m:'');if(bad){ok=false;first=first||id}};
+ chk('program',!d.program,'Хөтөлбөрөө сонгоно уу');
+ chk('sid',!/^[BM][A-Z0-9.]{6,11}$/.test(d.sid),'Оюутны кодоо зөв бичнэ үү (жишээ: MEA24E001)');
+ chk('ln',!nm.test(d.ln),'Овгоо бүтнээр бичнэ үү');
+ chk('fn',!nm.test(d.fn),'Нэрээ бүтнээр бичнэ үү');
+ chk('sex',!d.sex,'Хүйсээ сонгоно уу');
+ chk('ph',!/^\d{8}$/.test(d.ph),'Утасны дугаар 8 оронтой байх ёстой');
+ chk('emp',!d.emp,'Сонголтоо хийнэ үү');
+ if(d.emp==='yes'){chk('when',!d.when,'Сонгоно уу');chk('org',!d.org,'Сонгоно уу');chk('job',!d.job,'Сонгоно уу')}
+ if(d.emp==='no'){chk('rs',!d.rs,'Шалтгаанаа сонгоно уу')}
+ if(first)$('#g_'+first).scrollIntoView({behavior:'smooth',block:'center'});
+ return ok;
+}
+$f.addEventListener('submit',e=>{
+ e.preventDefault();show('');
+ const d=collect();if(!validate(d))return;
+ if(d.emp==='yes'){d.rs=''}else{d.when=d.org=d.job=''}
+ const b=$('#sub');b.disabled=true;b.textContent='Илгээж байна…';
+ send(d,r=>{b.disabled=false;b.textContent='Илгээх';
+   if(r&&r.ok){$f.classList.add('hide');$('#done').classList.remove('hide')}else show((r&&r.error)||'Илгээж чадсангүй. Дахин оролдоно уу.','bad')});
+});
+$('#again').onclick=()=>{$f.reset();sync();$f.classList.remove('hide');$('#done').classList.add('hide')};
+</script>
+</body></html>
