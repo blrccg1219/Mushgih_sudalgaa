@@ -96,7 +96,7 @@ function validate(d){
  const nm=/^[A-Za-z\u0400-\u04FF\u04E8\u04E9\u04AE\u04AF\-\u2019' .]{2,}$/;let first=null,ok=true;
  const chk=(id,bad,m)=>{setErr(id,bad?m:'');if(bad){ok=false;first=first||id}};
  chk('program',!d.program,'Хөтөлбөрөө сонгоно уу');
- chk('sid',!/^[A-Z]\d{6,}$/.test(d.sid),'Оюутны кодоо зөв бичнэ үү (жишээ: B211380011)');
+ chk('sid',!/^[BM]\d{6,}$/.test(d.sid),'Оюутны кодоо зөв бичнэ үү (жишээ: B211380011)');
  chk('ln',!nm.test(d.ln),'Овгоо бүтнээр бичнэ үү');
  chk('fn',!nm.test(d.fn),'Нэрээ бүтнээр бичнэ үү');
  chk('sex',!d.sex,'Хүйсээ сонгоно уу');
